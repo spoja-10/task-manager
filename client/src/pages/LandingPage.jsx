@@ -67,7 +67,7 @@ export default function LandingPage() {
             <button onClick={goToLogin} className="text-sm font-semibold text-ink-500 dark:text-ink-400 hover:text-ink-900 dark:hover:text-ink-100 transition px-3 py-2">
               Sign in
             </button>
-            <button onClick={goToRegister} className="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-white dark:text-ink-950 text-sm font-bold rounded-lg transition shadow-sm shadow-amber-500/30">
+            <button onClick={goToLogin} className="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-white dark:text-ink-950 text-sm font-bold rounded-lg transition shadow-sm shadow-amber-500/30">
               Get started
             </button>
           </div>
@@ -89,7 +89,7 @@ export default function LandingPage() {
             TaskFlow is the task manager that gets out of your way. Kanban boards, smart filters, guest mode — built for people who actually want to get things done.
           </p>
           <div className="flex flex-wrap items-center gap-3">
-            <button onClick={goToRegister} className="group flex items-center gap-2 px-7 py-3.5 bg-amber-500 hover:bg-amber-400 text-white dark:text-ink-950 font-bold rounded-xl transition shadow-lg shadow-amber-500/25 text-sm">
+            <button onClick={goToLogin} className="group flex items-center gap-2 px-7 py-3.5 bg-amber-500 hover:bg-amber-400 text-white dark:text-ink-950 font-bold rounded-xl transition shadow-lg shadow-amber-500/25 text-sm">
               Get started for free
               <ArrowRight size={15} className="group-hover:translate-x-0.5 transition-transform" />
             </button>
