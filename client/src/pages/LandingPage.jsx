@@ -72,7 +72,7 @@ export default function LandingPage() {
                 className="text-sm text-ink-400 hover:text-ink-100 transition font-medium">
                 Sign in
               </button>
-              <button onClick={goToApp}
+              <button onClick={goToLogin}
                 className="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-ink-950 text-sm font-bold rounded-lg transition">
                 Get started
               </button>
@@ -96,7 +96,7 @@ export default function LandingPage() {
               guest mode — everything you need, nothing you don't.
             </p>
             <div className="flex flex-wrap items-center gap-4">
-              <button onClick={goToApp}
+              <button onClick={goToLogin}
                 className="group flex items-center gap-2 px-6 py-3.5 bg-amber-500 hover:bg-amber-400 text-ink-950 font-bold rounded-xl transition shadow-lg shadow-amber-500/20 text-sm">
                 Get started for free
                 <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
@@ -214,7 +214,7 @@ export default function LandingPage() {
                   </li>
                 ))}
               </ul>
-              <button onClick={goToApp}
+              <button onClick={goToLogin}
                 className="w-full py-3 bg-amber-500 hover:bg-amber-400 text-ink-950 font-bold rounded-xl transition">
                 Get started for free
               </button>
