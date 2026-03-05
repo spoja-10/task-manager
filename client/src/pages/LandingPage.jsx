@@ -34,6 +34,7 @@ export default function LandingPage() {
 
   const goToApp = () => navigate('/app');
   const goToLogin = () => navigate('/login');
+  const goToRegister = () => navigate('/register');
 
   return (
     <div className="min-h-screen bg-white dark:bg-ink-950 text-ink-900 dark:text-ink-100 font-sans overflow-x-hidden transition-colors duration-300">
@@ -66,7 +67,7 @@ export default function LandingPage() {
             <button onClick={goToLogin} className="text-sm font-semibold text-ink-500 dark:text-ink-400 hover:text-ink-900 dark:hover:text-ink-100 transition px-3 py-2">
               Sign in
             </button>
-            <button onClick={goToLogin} className="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-white dark:text-ink-950 text-sm font-bold rounded-lg transition shadow-sm shadow-amber-500/30">
+            <button onClick={goToRegister} className="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-white dark:text-ink-950 text-sm font-bold rounded-lg transition shadow-sm shadow-amber-500/30">
               Get started
             </button>
           </div>
