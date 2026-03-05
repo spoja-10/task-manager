@@ -8,7 +8,7 @@ export default function GuestBanner() {
         <CloudOff size={15} />
         <span>You're in guest mode — tasks are saved locally only</span>
       </div>
-      <Link to="/register"
+      <Link to="/login"
         className="px-3 py-1.5 bg-amber-500 hover:bg-amber-400 text-white text-xs font-semibold rounded-lg transition whitespace-nowrap">
         Save to cloud
       </Link>
