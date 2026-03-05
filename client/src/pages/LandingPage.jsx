@@ -40,36 +40,36 @@ export default function LandingPage() {
 
   return (
     <div className={dark ? 'dark' : ''}>
-      <div className="min-h-screen bg-ink-950 text-ink-100 font-sans overflow-x-hidden">
+      <div className="min-h-screen bg-ink-50 dark:bg-ink-950 text-ink-900 dark:text-ink-100 font-sans overflow-x-hidden transition-colors duration-300">
 
         {/* Grain overlay */}
-        <div className="pointer-events-none fixed inset-0 z-0 opacity-[0.03]"
+        <div className="pointer-events-none fixed inset-0 z-0 opacity-[0.03] dark:opacity-[0.04]"
           style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\")", backgroundRepeat: 'repeat', backgroundSize: '128px' }} />
 
         {/* Ambient glow */}
-        <div className="pointer-events-none fixed top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] rounded-full opacity-10 blur-3xl z-0"
+        <div className="pointer-events-none fixed top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] rounded-full opacity-5 dark:opacity-10 blur-3xl z-0"
           style={{ background: 'radial-gradient(ellipse, #f59e0b 0%, transparent 70%)' }} />
 
         {/* ── NAV ── */}
-        <nav className="relative z-10 sticky top-0 bg-ink-950/80 backdrop-blur-md border-b border-ink-800/60">
+        <nav className="relative z-10 sticky top-0 bg-ink-50/80 dark:bg-ink-950/80 backdrop-blur-md border-b border-ink-200 dark:border-ink-800/60 transition-colors">
           <div className="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <CheckSquare className="text-amber-500" size={20} />
-              <span className="font-bold text-lg tracking-tight text-ink-100">TaskFlow</span>
+              <span className="font-bold text-lg tracking-tight text-ink-900 dark:text-ink-100">TaskFlow</span>
             </div>
-            <div className="hidden md:flex items-center gap-8 text-sm text-ink-400">
-              <a href="#features" className="hover:text-ink-100 transition">Features</a>
-              <a href="#how-it-works" className="hover:text-ink-100 transition">How it works</a>
-              <a href="#pricing" className="hover:text-ink-100 transition">Pricing</a>
-              <a href="#faq" className="hover:text-ink-100 transition">FAQ</a>
+            <div className="hidden md:flex items-center gap-8 text-sm text-ink-500 dark:text-ink-400">
+              <a href="#features" className="hover:text-ink-900 dark:hover:text-ink-100 transition">Features</a>
+              <a href="#how-it-works" className="hover:text-ink-900 dark:hover:text-ink-100 transition">How it works</a>
+              <a href="#pricing" className="hover:text-ink-900 dark:hover:text-ink-100 transition">Pricing</a>
+              <a href="#faq" className="hover:text-ink-900 dark:hover:text-ink-100 transition">FAQ</a>
             </div>
             <div className="flex items-center gap-3">
               <button onClick={toggle}
-                className="p-2 rounded-lg text-ink-400 hover:text-ink-200 hover:bg-ink-800 transition">
+                className="p-2 rounded-lg text-ink-500 dark:text-ink-400 hover:text-ink-700 dark:hover:text-ink-200 hover:bg-ink-200 dark:hover:bg-ink-800 transition">
                 {dark ? <Sun size={16} /> : <Moon size={16} />}
               </button>
               <button onClick={goToLogin}
-                className="text-sm text-ink-400 hover:text-ink-100 transition font-medium">
+                className="text-sm text-ink-500 dark:text-ink-400 hover:text-ink-900 dark:hover:text-ink-100 transition font-medium">
                 Sign in
               </button>
               <button onClick={goToLogin}
@@ -83,15 +83,15 @@ export default function LandingPage() {
         {/* ── HERO ── */}
         <section className="relative z-10 max-w-6xl mx-auto px-6 pt-28 pb-24">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-400 text-xs font-semibold mb-8 tracking-widest uppercase">
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-semibold mb-8 tracking-widest uppercase">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
               Free forever · No credit card
             </div>
-            <h1 className="text-6xl md:text-7xl font-black tracking-tighter leading-[0.95] text-ink-50 mb-6">
+            <h1 className="text-6xl md:text-7xl font-black tracking-tighter leading-[0.95] text-ink-900 dark:text-ink-50 mb-6">
               Stop planning.<br />
               <span className="text-amber-500">Start doing.</span>
             </h1>
-            <p className="text-lg text-ink-400 leading-relaxed max-w-xl mb-10">
+            <p className="text-lg text-ink-500 dark:text-ink-400 leading-relaxed max-w-xl mb-10">
               TaskFlow is the task manager that gets out of your way. Kanban boards, smart filters,
               guest mode — everything you need, nothing you don't.
             </p>
@@ -102,11 +102,11 @@ export default function LandingPage() {
                 <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
               </button>
               <button onClick={goToLogin}
-                className="px-6 py-3.5 border border-ink-700 hover:border-ink-500 text-ink-300 hover:text-ink-100 font-semibold rounded-xl transition text-sm">
+                className="px-6 py-3.5 border border-ink-300 dark:border-ink-700 hover:border-ink-500 dark:hover:border-ink-500 text-ink-600 dark:text-ink-300 hover:text-ink-900 dark:hover:text-ink-100 font-semibold rounded-xl transition text-sm">
                 Sign in
               </button>
             </div>
-            <div className="flex items-center gap-6 mt-12 text-xs text-ink-500">
+            <div className="flex items-center gap-6 mt-12 text-xs text-ink-400 dark:text-ink-500">
               {['No credit card', 'Guest mode', 'Open source'].map(t => (
                 <span key={t} className="flex items-center gap-1.5">
                   <CheckCircle2 size={12} className="text-amber-500" /> {t}
@@ -117,24 +117,24 @@ export default function LandingPage() {
 
           {/* Mock kanban */}
           <div className="mt-20 relative">
-            <div className="absolute inset-0 bg-gradient-to-t from-ink-950 via-transparent to-transparent z-10 pointer-events-none" />
-            <div className="grid grid-cols-3 gap-3 p-4 bg-ink-900/60 border border-ink-800 rounded-2xl backdrop-blur">
+            <div className="absolute inset-0 bg-gradient-to-t from-ink-50 dark:from-ink-950 via-transparent to-transparent z-10 pointer-events-none" />
+            <div className="grid grid-cols-3 gap-3 p-4 bg-white/70 dark:bg-ink-900/60 border border-ink-200 dark:border-ink-800 rounded-2xl backdrop-blur">
               {[
-                { col: 'To Do', color: 'text-ink-400', tasks: ['Design homepage', 'Write tests', 'Update docs'] },
-                { col: 'In Progress', color: 'text-blue-400', tasks: ['Build Kanban board', 'Auth flow'] },
-                { col: 'Done', color: 'text-green-400', tasks: ['Setup Docker', 'MongoDB models', 'API routes', 'Dark mode'] },
+                { col: 'To Do', color: 'text-ink-500 dark:text-ink-400', tasks: ['Design homepage', 'Write tests', 'Update docs'] },
+                { col: 'In Progress', color: 'text-blue-500 dark:text-blue-400', tasks: ['Build Kanban board', 'Auth flow'] },
+                { col: 'Done', color: 'text-green-600 dark:text-green-400', tasks: ['Setup Docker', 'MongoDB models', 'API routes', 'Dark mode'] },
               ].map(({ col, color, tasks }) => (
-                <div key={col} className="bg-ink-900 rounded-xl border border-ink-800 overflow-hidden">
-                  <div className="px-3 py-2 border-b border-ink-800 flex items-center gap-2">
+                <div key={col} className="bg-ink-100 dark:bg-ink-900 rounded-xl border border-ink-200 dark:border-ink-800 overflow-hidden">
+                  <div className="px-3 py-2 border-b border-ink-200 dark:border-ink-800 flex items-center gap-2">
                     <span className={`text-xs font-bold ${color}`}>{col}</span>
-                    <span className="text-xs text-ink-600 font-mono">{tasks.length}</span>
+                    <span className="text-xs text-ink-400 dark:text-ink-600 font-mono">{tasks.length}</span>
                   </div>
                   <div className="p-2 space-y-2">
                     {tasks.map(t => (
-                      <div key={t} className="px-3 py-2 bg-ink-800/60 rounded-lg border border-ink-700/50">
-                        <p className="text-xs text-ink-300 font-medium">{t}</p>
+                      <div key={t} className="px-3 py-2 bg-white dark:bg-ink-800/60 rounded-lg border border-ink-200 dark:border-ink-700/50">
+                        <p className="text-xs text-ink-700 dark:text-ink-300 font-medium">{t}</p>
                         <div className="flex gap-1.5 mt-1.5">
-                          <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-amber-500/15 text-amber-400 font-medium">medium</span>
+                          <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-amber-500/15 text-amber-600 dark:text-amber-400 font-medium">medium</span>
                         </div>
                       </div>
                     ))}
@@ -149,30 +149,30 @@ export default function LandingPage() {
         <section id="features" className="relative z-10 max-w-6xl mx-auto px-6 py-24">
           <div className="mb-14">
             <p className="text-amber-500 text-xs font-bold tracking-widest uppercase mb-3">Features</p>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-ink-50">
+            <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-ink-900 dark:text-ink-50">
               Everything you need.<br />Nothing you don't.
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {FEATURES.map(({ icon: Icon, title, desc }) => (
               <div key={title}
-                className="group p-6 bg-ink-900/50 border border-ink-800 rounded-2xl hover:border-amber-500/40 hover:bg-ink-900 transition-all duration-300">
+                className="group p-6 bg-white dark:bg-ink-900/50 border border-ink-200 dark:border-ink-800 rounded-2xl hover:border-amber-400 dark:hover:border-amber-500/40 hover:bg-ink-50 dark:hover:bg-ink-900 transition-all duration-300 shadow-sm">
                 <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-4 group-hover:bg-amber-500/20 transition">
-                  <Icon size={18} className="text-amber-400" />
+                  <Icon size={18} className="text-amber-500" />
                 </div>
-                <h3 className="font-bold text-ink-100 mb-2">{title}</h3>
-                <p className="text-sm text-ink-500 leading-relaxed">{desc}</p>
+                <h3 className="font-bold text-ink-900 dark:text-ink-100 mb-2">{title}</h3>
+                <p className="text-sm text-ink-500 dark:text-ink-500 leading-relaxed">{desc}</p>
               </div>
             ))}
           </div>
         </section>
 
         {/* ── HOW IT WORKS ── */}
-        <section id="how-it-works" className="relative z-10 border-y border-ink-800/60 bg-ink-900/30">
+        <section id="how-it-works" className="relative z-10 border-y border-ink-200 dark:border-ink-800/60 bg-ink-100/50 dark:bg-ink-900/30 transition-colors">
           <div className="max-w-6xl mx-auto px-6 py-24">
             <div className="mb-14">
               <p className="text-amber-500 text-xs font-bold tracking-widest uppercase mb-3">How it works</p>
-              <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-ink-50">
+              <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-ink-900 dark:text-ink-50">
                 Up and running<br />in 60 seconds.
               </h2>
             </div>
@@ -180,11 +180,11 @@ export default function LandingPage() {
               {STEPS.map(({ n, title, desc }, i) => (
                 <div key={n} className="relative">
                   {i < STEPS.length - 1 && (
-                    <div className="hidden lg:block absolute top-6 left-full w-full h-px bg-gradient-to-r from-ink-700 to-transparent z-0" />
+                    <div className="hidden lg:block absolute top-6 left-full w-full h-px bg-gradient-to-r from-ink-300 dark:from-ink-700 to-transparent z-0" />
                   )}
                   <div className="relative z-10">
-                    <div className="font-mono text-3xl font-black text-amber-500/30 mb-3">{n}</div>
-                    <h3 className="font-bold text-ink-100 mb-2">{title}</h3>
+                    <div className="font-mono text-3xl font-black text-amber-500/40 mb-3">{n}</div>
+                    <h3 className="font-bold text-ink-900 dark:text-ink-100 mb-2">{title}</h3>
                     <p className="text-sm text-ink-500 leading-relaxed">{desc}</p>
                   </div>
                 </div>
@@ -197,17 +197,17 @@ export default function LandingPage() {
         <section id="pricing" className="relative z-10 max-w-6xl mx-auto px-6 py-24">
           <div className="mb-14 text-center">
             <p className="text-amber-500 text-xs font-bold tracking-widest uppercase mb-3">Pricing</p>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-ink-50 mb-4">Free. Full stop.</h2>
-            <p className="text-ink-400 max-w-md mx-auto">No tiers. No paywalls. No "pro" features. TaskFlow is free for everyone, forever.</p>
+            <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-ink-900 dark:text-ink-50 mb-4">Free. Full stop.</h2>
+            <p className="text-ink-500 max-w-md mx-auto">No tiers. No paywalls. No "pro" features. TaskFlow is free for everyone, forever.</p>
           </div>
           <div className="max-w-sm mx-auto">
-            <div className="relative p-8 bg-ink-900 border-2 border-amber-500/50 rounded-2xl text-center shadow-xl shadow-amber-500/5">
+            <div className="relative p-8 bg-white dark:bg-ink-900 border-2 border-amber-500/50 rounded-2xl text-center shadow-xl shadow-amber-500/5">
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-amber-500 text-ink-950 text-xs font-black rounded-full tracking-wide">
                 THE ONLY PLAN
               </div>
-              <div className="text-6xl font-black text-ink-50 mt-2">$0</div>
-              <div className="text-ink-500 text-sm mb-8">forever</div>
-              <ul className="space-y-3 text-sm text-ink-300 text-left mb-8">
+              <div className="text-6xl font-black text-ink-900 dark:text-ink-50 mt-2">$0</div>
+              <div className="text-ink-400 text-sm mb-8">forever</div>
+              <ul className="space-y-3 text-sm text-ink-600 dark:text-ink-300 text-left mb-8">
                 {['Unlimited tasks', 'Kanban board', 'Smart filters & search', 'Tags & categories', 'Google Sign-In', 'Dark mode', 'Guest mode'].map(f => (
                   <li key={f} className="flex items-center gap-2.5">
                     <CheckCircle2 size={14} className="text-amber-500 shrink-0" />{f}
@@ -223,24 +223,24 @@ export default function LandingPage() {
         </section>
 
         {/* ── FAQ ── */}
-        <section id="faq" className="relative z-10 border-t border-ink-800/60 bg-ink-900/30">
+        <section id="faq" className="relative z-10 border-t border-ink-200 dark:border-ink-800/60 bg-ink-100/50 dark:bg-ink-900/30 transition-colors">
           <div className="max-w-3xl mx-auto px-6 py-24">
             <div className="mb-14">
               <p className="text-amber-500 text-xs font-bold tracking-widest uppercase mb-3">FAQ</p>
-              <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-ink-50">Questions answered.</h2>
+              <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-ink-900 dark:text-ink-50">Questions answered.</h2>
             </div>
             <div className="space-y-2">
               {FAQS.map(({ q, a }, i) => (
-                <div key={i} className="border border-ink-800 rounded-xl overflow-hidden">
+                <div key={i} className="border border-ink-200 dark:border-ink-800 rounded-xl overflow-hidden bg-white dark:bg-transparent">
                   <button onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                    className="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-ink-800/40 transition">
-                    <span className="font-semibold text-ink-100 text-sm">{q}</span>
+                    className="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-ink-50 dark:hover:bg-ink-800/40 transition">
+                    <span className="font-semibold text-ink-900 dark:text-ink-100 text-sm">{q}</span>
                     {openFaq === i
                       ? <ChevronUp size={16} className="text-amber-500 shrink-0" />
-                      : <ChevronDown size={16} className="text-ink-500 shrink-0" />}
+                      : <ChevronDown size={16} className="text-ink-400 shrink-0" />}
                   </button>
                   {openFaq === i && (
-                    <div className="px-6 pb-5 text-sm text-ink-400 leading-relaxed border-t border-ink-800">
+                    <div className="px-6 pb-5 text-sm text-ink-500 leading-relaxed border-t border-ink-200 dark:border-ink-800">
                       <div className="pt-4">{a}</div>
                     </div>
                   )}
@@ -267,16 +267,16 @@ export default function LandingPage() {
         </section>
 
         {/* ── FOOTER ── */}
-        <footer className="relative z-10 border-t border-ink-800/60 max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-ink-600">
+        <footer className="relative z-10 border-t border-ink-200 dark:border-ink-800/60 max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-ink-400">
           <div className="flex items-center gap-2">
             <CheckSquare size={14} className="text-amber-500" />
             <span className="font-bold text-ink-500">TaskFlow</span>
             <span>· Built with React, Node.js & MongoDB</span>
           </div>
           <div className="flex items-center gap-4">
-            <a href="#" className="hover:text-ink-400 transition">Privacy</a>
-            <a href="#" className="hover:text-ink-400 transition">Terms</a>
-            <a href="#" className="hover:text-ink-400 transition flex items-center gap-1"><Github size={12} /> GitHub</a>
+            <a href="#" className="hover:text-ink-600 dark:hover:text-ink-300 transition">Privacy</a>
+            <a href="#" className="hover:text-ink-600 dark:hover:text-ink-300 transition">Terms</a>
+            <a href="#" className="hover:text-ink-600 dark:hover:text-ink-300 transition flex items-center gap-1"><Github size={12} /> GitHub</a>
           </div>
         </footer>
       </div>
