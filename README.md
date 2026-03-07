@@ -12,7 +12,7 @@ TaskFlow helps users create, organize, and track tasks across a Kanban workflow 
 
 ## 🔗 Live App
 
-- Login: https://task-manager-production-47ab.up.railway.app/login
+- Login: https://task-manager-production-47ab.up.railway.app/
 
 ---
 
