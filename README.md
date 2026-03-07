@@ -1,68 +1,119 @@
 # TaskFlow
 
-TaskFlow is a full-stack task management application with JWT authentication, Google sign-in support, task organization features, and a responsive React UI.
+> Full-stack Kanban task manager built for speed, clarity, and smooth developer onboarding.
 
-## Tech Stack
+![React](https://img.shields.io/badge/Frontend-React_18-61DAFB?logo=react&logoColor=white)
+![Node.js](https://img.shields.io/badge/Backend-Node.js_+_Express-339933?logo=node.js&logoColor=white)
+![MongoDB](https://img.shields.io/badge/Database-MongoDB_7-47A248?logo=mongodb&logoColor=white)
+![Docker](https://img.shields.io/badge/Infra-Docker-2496ED?logo=docker&logoColor=white)
+![Railway](https://img.shields.io/badge/Deploy-Railway-0B0D0E?logo=railway&logoColor=white)
 
-- **Frontend:** React, Vite, Tailwind CSS, React Router, Axios
-- **Backend:** Node.js, Express, Mongoose, JWT, bcrypt
-- **Database:** MongoDB
-- **Deployment/Runtime:** Docker, Docker Compose, Nginx (for client container)
+TaskFlow helps users create, organize, and track tasks across a Kanban workflow (**To Do → In Progress → Done**) with filtering, priorities, categories, due dates, and search.
 
-## Features
+## 🔗 Live App
 
-- User registration and login with JWT
-- Optional Google OAuth sign-in endpoint
-- Protected task API per user
-- Task CRUD operations
-- Task metadata: status, priority, categories, due date
-- Search and filtering support from API query parameters
-- Dark mode and dashboard-oriented UI
-- Dockerized local environment
+- Login: https://task-manager-production-47ab.up.railway.app/
 
-## Project Structure
+---
+
+## ✨ Highlights
+
+- Guest mode for quick usage (up to 5 tasks)
+- Guest task migration after sign-in
+- Email/password auth + Google OAuth
+- Kanban board with status cycling UX
+- Smart filtering (priority, category, search, sort)
+- Dark mode persisted in localStorage
+- Dockerized local development
+- Railway-friendly deployment
+
+---
+
+## 🧱 Tech Stack
+
+| Layer | Stack |
+|---|---|
+| Frontend | React 18, Vite, Tailwind CSS, Axios |
+| Backend | Node.js, Express, JWT, Google Auth |
+| Database | MongoDB 7, Mongoose |
+| Infrastructure | Docker Compose, Nginx, Railway |
+
+---
+
+## 📁 Project Structure
 
 ```text
 .
-├── client/                 # React frontend (Vite + Tailwind)
-├── server/                 # Express + MongoDB API
-├── docker-compose.yml      # Full local stack (client + server + mongo)
-└── README.md
+├── docker-compose.yml
+├── .env.example
+├── server/
+│   ├── Dockerfile
+│   ├── index.js
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   └── routes/
+└── client/
+    ├── Dockerfile
+    ├── nginx.conf
+    ├── railway.toml
+    └── src/
 ```
 
-## Prerequisites
+---
 
-Choose one setup path:
+## 🚀 Quick Start (Docker - Recommended)
 
-- **Docker path (recommended):**
-  - Docker
-  - Docker Compose
-- **Local development path:**
-  - Node.js 18+
-  - npm 9+
-  - MongoDB (local or hosted)
+### 1) Prerequisites
 
-## Quick Start (Docker)
+- Docker Desktop
+- Git
 
-1. From the repository root:
+### 2) Clone
 
-   ```bash
-   docker-compose up --build
-   ```
+```bash
+git clone https://github.com/spoja-10/task-manager.git
+cd task-manager
+```
 
-2. Open the app at:
-   - **Frontend:** `http://localhost:8080`
-   - **API health:** `http://localhost:5001/api/health`
+### 3) Configure secrets safely
 
-### Default container ports
+Create a local environment file from the template:
 
-- `8080` → client (Nginx serving the Vite build)
-- `5001` → server (Express API)
-- `27019` → MongoDB
+```bash
+cp .env.example .env
+```
 
-## Local Development (without Docker)
+Then set **real secret values locally** (never commit them):
 
-### 1) Backend
+- `JWT_SECRET`
+- `GOOGLE_CLIENT_ID`
+
+> 🔐 **Security note:** Do not commit `.env` files. Keep secrets in local `.env` for development and in Railway Variables (or another secret manager) for production.
+
+### 4) Run
+
+```bash
+docker-compose up --build
+```
+
+### 5) Access
+
+- App: `http://localhost:8080`
+- API: `http://localhost:5001`
+- API health: `http://localhost:5001/api/health`
+
+Stop with:
+
+```bash
+docker-compose down
+```
+
+---
+
+## 🧪 Local Development (without Docker)
+
+### Backend
 
 ```bash
 cd server
@@ -70,11 +121,9 @@ npm install
 npm run dev
 ```
 
-The API runs on `http://localhost:5000` by default.
+Backend default URL: `http://localhost:5000`
 
-### 2) Frontend
-
-In a separate terminal:
+### Frontend
 
 ```bash
 cd client
@@ -82,91 +131,134 @@ npm install
 npm run dev
 ```
 
-The Vite dev server runs on `http://localhost:5173` by default.
+Frontend default URL: `http://localhost:5173`
 
-## Environment Variables
+### Local environment variables
 
-### Server (`server/.env`)
+Use your own local `.env` files (never commit them):
 
-Create a `.env` file in `server/`:
+- `server/.env` (example keys): `PORT`, `MONGODB_URI`, `JWT_SECRET`, `JWT_EXPIRE`, `CLIENT_URL`, `GOOGLE_CLIENT_ID`
+- `client/.env` (example keys): `VITE_API_URL`, `VITE_GOOGLE_CLIENT_ID`
 
-```env
-PORT=5000
-MONGODB_URI=mongodb://localhost:27017/taskmanager
-JWT_SECRET=replace_with_a_secure_secret
-JWT_EXPIRE=7d
-CLIENT_URL=http://localhost:5173
-GOOGLE_CLIENT_ID=your_google_client_id
-```
+---
 
-### Client (`client/.env`)
+## 🔌 API Reference
 
-Create a `.env` file in `client/` if using Google sign-in in the UI:
-
-```env
-VITE_API_URL=http://localhost:5000/api
-VITE_GOOGLE_CLIENT_ID=your_google_client_id
-```
-
-> When running with Docker Compose, API requests are exposed through `http://localhost:5001` and the production client is served at `http://localhost:8080`.
-
-## API Overview
-
+Base URL (Docker): `http://localhost:5001/api`  
 Base URL (local backend): `http://localhost:5000/api`
 
-### Auth Routes
+### Auth
 
-- `POST /auth/register` — create account
-- `POST /auth/login` — sign in with email/password
-- `POST /auth/google` — sign in with Google credential token
-- `GET /auth/me` — get current user (requires Bearer token)
+| Method | Endpoint | Description |
+|---|---|---|
+| POST | `/auth/register` | Create account `{ name, email, password }` |
+| POST | `/auth/login` | Login with email/password |
+| POST | `/auth/google` | Login/signup with Google credential `{ credential }` |
+| GET | `/auth/me` | Get current user (Bearer token required) |
 
-### Task Routes (authenticated)
+### Tasks (Authenticated)
 
-- `GET /tasks` — list current user tasks
-- `POST /tasks` — create task
-- `GET /tasks/:id` — get one task
-- `PUT /tasks/:id` — update task
-- `DELETE /tasks/:id` — delete task
+| Method | Endpoint | Description |
+|---|---|---|
+| GET | `/tasks` | List tasks (supports query filters) |
+| POST | `/tasks` | Create task |
+| GET | `/tasks/:id` | Get task by ID |
+| PUT | `/tasks/:id` | Update task |
+| DELETE | `/tasks/:id` | Delete task |
 
-### Task fields
+Supported query params for `GET /tasks`:
 
-- `title` (required)
-- `description` (optional)
-- `status`: `todo` | `in-progress` | `completed`
-- `priority`: `low` | `medium` | `high`
-- `categories`: string array
-- `dueDate`: ISO date
+- `status`
+- `priority`
+- `category`
+- `search`
+- `sortBy`
+- `order`
 
-## Authentication
-
-The backend returns a JWT token on successful login/registration. Include it on protected endpoints:
+Use token for protected routes:
 
 ```http
 Authorization: Bearer <token>
 ```
 
-## Scripts
+---
 
-### Server
+## 🌍 Deployment (Railway)
 
-- `npm run dev` — start backend with nodemon
-- `npm start` — start backend with node
+Typical services:
 
-### Client
+- MongoDB plugin
+- `server` service (root: `/server`)
+- `client` service (root: `/client`)
 
-- `npm run dev` — run Vite dev server
-- `npm run build` — create production build
-- `npm run preview` — preview production build locally
+### Recommended production env vars
 
-## Troubleshooting
+**Server**
 
-- **CORS error:** Ensure `CLIENT_URL` matches your frontend origin.
-- **Mongo connection error:** Verify `MONGODB_URI` and whether MongoDB is running.
-- **401 on protected routes:** Check JWT token presence/format (`Bearer <token>`).
-- **Google auth failure:** Confirm `GOOGLE_CLIENT_ID` is set in server and client env files.
+- `NODE_ENV=production`
+- `JWT_SECRET=<secure-secret>`
+- `JWT_EXPIRE=7d`
+- `MONGODB_URI=<railway-mongodb-uri>`
+- `CLIENT_URL=<client-url>`
+- `GOOGLE_CLIENT_ID=<google-client-id>`
 
-## Notes
+**Client**
 
-- The repository includes legacy/alternate route files (`server/routes/authRoutes.js`, `server/routes/taskRoutes.js`) that are not the ones currently mounted by `server/index.js`.
-- Active routes are mounted from `server/routes/auth.js` and `server/routes/tasks.js`.
+- `VITE_API_URL=<server-url>`
+- `VITE_GOOGLE_CLIENT_ID=<google-client-id>`
+
+> ⚠️ Vite variables are injected at build time. Redeploy client after changing any `VITE_*` value.
+
+---
+
+## 🔐 Google OAuth Setup (Quick Checklist)
+
+1. Create project in Google Cloud Console
+2. Create OAuth 2.0 Web Client credentials
+3. Add allowed JavaScript origins (local + production)
+4. Configure/publish OAuth consent screen
+5. Set `GOOGLE_CLIENT_ID` in server runtime and `VITE_GOOGLE_CLIENT_ID` in client build env
+
+---
+
+## 🛠️ Troubleshooting
+
+| Issue | Fix |
+|---|---|
+| MongoDB connection refused (local) | Restart Docker Desktop; run `docker-compose down` then `docker-compose up --build` |
+| Port `8080` already in use | Stop process using the port or remap in `docker-compose.yml` |
+| Docker pull TLS timeout | Check VPN/firewall, restart Docker Desktop, verify DNS settings |
+| Google OAuth `invalid_client` | Verify client ID and allowed origins; redeploy after env changes |
+| Railway MongoDB `ENOTFOUND` | Use Railway TCP proxy URL format |
+| `VITE_*` updates not reflected | Trigger full frontend redeploy |
+
+---
+
+## 🤝 Contributing
+
+```bash
+git add .
+git commit -m "your message"
+git push
+```
+
+### Development notes
+
+- Add API logic in `server/controllers/`
+- Add routes in `server/routes/`
+- Register routes in `server/index.js`
+- Add pages in `client/src/pages/`
+- Register new client routes in `client/src/App.jsx`
+
+---
+
+## ✅ Security Best Practices
+
+- Never commit `.env` files.
+- Keep secrets only in local env files and production secret managers.
+- Rotate `JWT_SECRET` if it is ever exposed.
+- Use distinct credentials for local/staging/production.
+
+---
+
+Built with ❤️ using React, Node.js, and MongoDB.
